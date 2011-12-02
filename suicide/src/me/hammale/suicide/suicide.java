@@ -43,14 +43,22 @@ public class suicide extends JavaPlugin {
 	
 	 public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
 	  {
-		  if (cmd.getName().equalsIgnoreCase("boom")) {
-			  if ((sender instanceof Player)) {	
-				  Player p = (Player) sender;
-				  active.add((p).getName());
-				  return true;
-			  }
+		 if(sender instanceof Player){
+		  if (cmd.getName().equalsIgnoreCase("fon")) {
+			  	Player p = (Player) sender;
+				active.add(p.getName());
+				System.out.println("on");
+				return true;			  
 		  }
+		  if (cmd.getName().equalsIgnoreCase("foff")) {
+	  		  Player p = (Player) sender;
+			  active.remove(p.getName());
+			  System.out.println("off");
+			  return true;			  
+		  }
+	  }else{
 		  return false;
 	  }
-	
+		  return false;
+	}
 }

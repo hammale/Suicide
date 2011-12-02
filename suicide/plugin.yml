@@ -2,6 +2,9 @@ name: Suicide
 main: me.hammale.suicide.suicide
 version: 1.0
 commands:
-  boom:
+  fon:
+    description:
+    usage: |
+  foff:
     description:
     usage: |

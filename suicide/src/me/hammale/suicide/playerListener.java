@@ -18,27 +18,13 @@ public class playerListener extends PlayerListener {
 	  {
 	    this.plugin = plugin;
 	  }
-	
+	  int i = 1;
+	@Override
 	public void onPlayerMove(final PlayerMoveEvent e) {
-		if(plugin.active.contains(e.getPlayer().getName())){
-			Player p = e.getPlayer();
-			final World w = p.getWorld();
-  			 final BukkitTimer plt = new BukkitTimer(plugin);
-			  TimerTask tsk = new TimerTask() {
-			  @Override
-			  public void run() {
-				  int i = 1;
-				  Block b = e.getPlayer().getLocation().getBlock();
-				  Block fire = b.getRelative(BlockFace.UP, 1);
-				  fire.setType(Material.FIRE);
-				  e.getPlayer().sendMessage(Integer.toString(i));
-				  //plt.cancel();
-				  i++;
-			  }
-			  };
-			  plt.scheduleAtFixedRate(tsk, 60); 
-	   		w.createExplosion(e.getPlayer().getLocation(), 5);
-	   		plugin.active.remove(e.getPlayer().getName());
+		Block down = e.getPlayer().getLocation().getBlock().getRelative(BlockFace.DOWN, 1);
+		if(plugin.active.contains(e.getPlayer().getName()) && down.getType() != Material.AIR){
+			Block b = e.getPlayer().getLocation().getBlock();
+			b.setType(Material.FIRE);
 		}
-	}
-}	
+		}
+}
