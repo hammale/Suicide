@@ -1,0 +1,7 @@
+name: Suicide
+main: me.hammale.suicide.suicide
+version: 1.0
+commands:
+  boom:
+    description:
+    usage: |
